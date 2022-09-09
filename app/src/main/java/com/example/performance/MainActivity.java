@@ -3,6 +3,7 @@ package com.example.performance;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.os.TraceCompat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Debug;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
+import com.example.performance.memory.MemoryShakeActivity;
 import com.example.performance.util.LaunchTimer;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,5 +42,10 @@ public class MainActivity extends AppCompatActivity {
         super.onWindowFocusChanged(hasFocus);
         Log.e("启动时间计算", "在onWindowFocusChanged()中进行监听");
         LaunchTimer.endRecord();
+    }
+
+    public void JumpToMemoryThrashing(View view) {
+        Intent intent = new Intent(MainActivity.this, MemoryShakeActivity.class);
+        startActivity(intent);
     }
 }
